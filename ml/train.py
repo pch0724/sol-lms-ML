@@ -85,17 +85,13 @@ def train_model():
     result_df["dropout_prob"] = y_prob
     result_df["risk_grade"] = result_df["dropout_prob"].apply(risk_grade)
 
-    print("===== risk grade value counts =====")
-    print(result_df["risk_grade"].value_counts())
-
-    print("===== result data frame =====")
-    print(result_df[["trnee_id", "dropout_prob", "risk_grade"]].head())
-
     cm = confusion_matrix(y_test, y_pred)
     print(cm)
 
-    return model
-
+    return {
+        "model": model,
+        "features": X.columns.tolist()
+    }
     # sns.heatmap(cm, annot=True, fmt="d")
     # plt.xlabel("Predicted")
     # plt.ylabel("Actual")

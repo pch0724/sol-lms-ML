@@ -12,7 +12,7 @@ def build_hrd_features():
     counsel_feature = pd.DataFrame(get_counsel_feature())
 
     attendance_feature["trnee_id"] = attendance_feature["trnee_id"].astype(str)
-    counsel_feature["trnee_id"] = counsel_feature["trnee_id"].astype(str)    
+    counsel_feature["trnee_id"] = counsel_feature["trnee_id"].astype(str)
 
     final_features = (
         attendance_feature

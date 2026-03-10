@@ -3,7 +3,7 @@ from app.util.db_connect import db_connection
 
 def get_hrd_counseling_data():
     engine = db_connection()
-    
+
     query = """
     select
         c.counseling_id,
@@ -57,6 +57,8 @@ def get_hrd_counseling_data():
     counsel_df["counseling_date"] = pd.to_datetime(
         counsel_df["counseling_date"], errors="coerce"
     )
+
+    counsel_df.fillna(0)
 
     return counsel_df
 

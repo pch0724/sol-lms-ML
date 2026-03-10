@@ -1,16 +1,6 @@
 # dataframe 
 import pandas as pd
-from dateutil.relativedelta import relativedelta
-# API 호출 관련
-import requests
-from app.util.session import create_session
-import json
-import time
-# .env
-import os
-
 from app.util.db_connect import db_connection
-from ml.dataset.common.training import get_hrd_trainings
 
 def get_non_hrd_attendance() :
     engine = db_connection()

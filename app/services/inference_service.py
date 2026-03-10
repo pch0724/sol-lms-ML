@@ -39,13 +39,11 @@ def predict_dropout(req: PredictRequest):
 
     if student_cnt != 0:    
         attendance_feature = get_attendance(req.training_id, req.trainee_key_allowed)
-        # attendance_feature = get_attendance(15,1)
         attendance_feature = attendance_feature.rename(
             columns={"trnee_cstmr_id": "trnee_id"}
         )
 
         counsel_feature = get_counsel_feature(req.training_id, req.trainee_key_allowed)
-        # counsel_feature = get_counsel_feature(15,1)
 
         # Feature Merge
         attendance_feature["trnee_id"] = attendance_feature["trnee_id"].astype(str)
@@ -74,6 +72,7 @@ def predict_dropout(req: PredictRequest):
 
         X = X[feature_columns]
         X = X.apply(pd.to_numeric, errors="coerce")
+        
         # 3. 확률 예측
         probs = model.predict_proba(X)[:, 1]
 
@@ -109,7 +108,6 @@ def get_student(training_id) :
         order by s.trnee_id
     """)
     
-    # df_student = pd.read_sql(query,engine,params={"training_id" : 15})
     df_student = pd.read_sql(query,engine,params={"training_id" : training_id})
     
     df_student["trnee_id"] = df_student["trnee_id"].astype(str)

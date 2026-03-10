@@ -1,5 +1,4 @@
 import pandas as pd
-from sqlalchemy import create_engine
 from app.util.db_connect import db_connection
 
 def getStudent():

@@ -50,7 +50,7 @@ def get_hrd_counseling_data(training_id, trainee_key_allowed):
             (select training_id from training where trainee_key_allowed = :trainee_key_allowed)
     ) b
     where c.student_id = b.student_id
-          AND b.training_id = :training_id
+        AND b.training_id = :training_id
     order by c.counseling_date, b.training_id
     """)
 

@@ -20,5 +20,4 @@ def training_job():
 
 def start_scheduler():
     scheduler.add_job(training_job, "cron", day_of_week="4", hour="23", minute="0", second="0") # 매주 금요일 오후 11시 학습
-    # scheduler.add_job(training_job, "cron", minute="10", second="0") # 매주 금요일 오후 11시 학습
     scheduler.start()        

@@ -135,7 +135,7 @@ def get_output(df_response) :
             attendanceCount=row.total_days,
             consecutiveAbsentDays=row.max_consecutive_absent,
             negativeCounselingScore=int(row.negativeCounselingScore),
-            riskScore=row.dropout_prob,
+            riskScore=row.dropout_prob * 10,
             riskLevel=row.risk_grade
         )
 
